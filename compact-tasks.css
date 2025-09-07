@@ -29,7 +29,7 @@ ul > li.plugin-tasks-list-item .task-list-item-checkbox {
 }
 
 .task-list-item[data-task-priority="high"] input[type=checkbox] {
-        border-color: rgb(255, 166, 0);
+        border-color: rgb(255, 166, 0); 
 }
 
 .task-list-item[data-task-priority="medium"] input[type=checkbox] {
@@ -41,11 +41,11 @@ ul > li.plugin-tasks-list-item .task-list-item-checkbox {
 }
 
 .task-list-item[data-task-priority="low"] input[type=checkbox] {
-        border-color: rgb(0, 78, 123);
+        border-color: rgb(42, 134, 255);
 }
 
 .task-list-item[data-task-priority="lowest"] input[type=checkbox] {
-        border-color: rgb(22, 30, 88);
+        border-color: rgb(161, 119, 239);
 }
 
 /* Hides elements that aren't necessary to be shown */
@@ -55,20 +55,23 @@ span.task-priority {
 span.task-onCompletion{
     display: none;
 }
+span.task-done{
+    display: none;
+}
 a.tasks-postpone{
     display: none;
 }
 
 /* Due dates matching today colored blue */
 .task-due[data-task-due="today"] span {
-        color: #225dff;
+        color: #4e95ff;
 }
 /* Overdue due dates colored red */
 .task-list-item[data-task=""] .task-due[data-task-due^="past-"] span {
         color: #ff2853;
 }
 
-/* Overdue scheduled dates colored red */
+/* Overdue scheduled dates colored red */   
 .task-list-item[data-task=""] .task-scheduled[data-task-scheduled^="past-"] span {
         color: #ff2853;
 }
