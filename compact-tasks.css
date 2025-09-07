@@ -1,0 +1,180 @@
+/* 
+This is adapted from sunb-mn's Minimal Tasks Theme.
+https://github.com/obsidian-tasks-group/obsidian-tasks/discussions/1962
+
+This CSS Snippet is used to customize the appearance of query blocks in the Tasks plugin for Obsidian.
+https://github.com/obsidian-tasks-group/obsidian-tasks
+*/
+
+:root{
+    --maintext-size: 1rem;
+    --subtext-size: 0.7rem;
+}
+
+ul.contains-task-list.plugin-tasks-query-result {
+    padding: 0 10px;
+}
+
+
+/* Make checkboxes a rounded square */
+ul > li.plugin-tasks-list-item .task-list-item-checkbox {
+     margin-inline-start: 0;
+         margin: 5px 2px;
+         border-radius: 30%;
+}
+
+/* Task priority is denoted by changing the color of the checkbox */
+.task-list-item[data-task-priority="highest"] input[type=checkbox] {
+        border-color: rgb(255, 54, 54);
+}
+
+.task-list-item[data-task-priority="high"] input[type=checkbox] {
+        border-color: rgb(255, 166, 0);
+}
+
+.task-list-item[data-task-priority="medium"] input[type=checkbox] {
+        border-color: rgb(255, 230, 0);
+}
+
+.task-list-item[data-task-priority="normal"] input[type=checkbox] {
+        border-color: rgb(146, 151, 158);
+}
+
+.task-list-item[data-task-priority="low"] input[type=checkbox] {
+        border-color: rgb(0, 78, 123);
+}
+
+.task-list-item[data-task-priority="lowest"] input[type=checkbox] {
+        border-color: rgb(22, 30, 88);
+}
+
+/* Hides elements that aren't necessary to be shown */
+span.task-priority {
+        display: none;
+}
+span.task-onCompletion{
+    display: none;
+}
+a.tasks-postpone{
+    display: none;
+}
+
+/* Due dates matching today colored blue */
+.task-due[data-task-due="today"] span {
+        color: #225dff;
+}
+/* Overdue due dates colored red */
+.task-list-item[data-task=""] .task-due[data-task-due^="past-"] span {
+        color: #ff2853;
+}
+
+/* Overdue scheduled dates colored red */
+.task-list-item[data-task=""] .task-scheduled[data-task-scheduled^="past-"] span {
+        color: #ff2853;
+}
+
+
+/* task-list-item represents each individual task entry */
+ul > li.plugin-tasks-list-item {
+    display: grid;
+    grid-template-columns: 0px auto 1fr;
+    grid-template-rows: auto auto;
+    gap: 4px 8px;
+    align-items: start;
+    padding: 8px 0;
+    position: relative;
+}
+
+/* task-list-text represents all of the content of a task entry */
+.tasks-list-text {
+    grid-column: 2;
+    grid-row: 1 / span 2; /* Span both rows */
+    display: grid;
+    grid-template-columns: auto auto auto 1fr;
+    grid-template-rows: auto auto; 
+    align-items: start;
+    gap: 4px;
+}
+
+.task-description {
+    grid-row: 1;
+    grid-column: 1 / span 4;
+    flex: 1;
+    opacity: 1;
+    font-size: var(--maintext-size);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+    transition: opacity 0.1s ease;
+}
+
+/*  Extras contains the Backlink, Edit Button, and Postpone Button (though I have disabled the Postpone Button)
+    This is not shown by default, but will be faded on to swap with the description when the user hovers over the description. */
+span.task-extras{
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    right: 0;
+    font-size: var(--maintext-size);
+    z-index: 100;
+
+    /* Not shown by default and pointer events (e.g. clicking the edit button) disabled */
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.1s ease;
+}
+
+/* Fade off the description on hover to swap it with the extras */
+li.plugin-tasks-list-item:has(.task-description:hover,.task-extras:hover):hover .task-description {
+    opacity: 0;
+}
+
+/* Fade on the extras on hover to swap it with the description */
+li.plugin-tasks-list-item:has(.task-description:hover,.task-extras:hover):hover span.task-extras {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+span.task-scheduled {
+    padding-right: 20px;
+    grid-row: 2;
+    grid-column: 1;
+    font-size: var(--subtext-size);
+    width: max-content;
+    color: gray;
+}
+
+span.task-due {
+    grid-row: 2;
+    grid-column: 2;
+    font-size: var(--subtext-size);
+    width: max-content;
+    color: gray;
+}
+
+
+span.task-recurring {
+    padding-left: 20px;
+    grid-row: 2;
+    grid-column: 3;
+    font-size: 0;
+    width: max-content;
+    color: gray;
+}
+
+span.task-recurring::after {
+    content: "🔁";
+    font-size: var(--subtext-size);
+}
+
+span.task-recurring:hover{
+    font-size: var(--subtext-size);
+}
+
+span.task-recurring:hover::after{
+    content: "";
+}
