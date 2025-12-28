@@ -18,22 +18,21 @@ ul.contains-task-list.plugin-tasks-query-result {
 
 /* Make checkboxes a rounded square */
 ul > li.plugin-tasks-list-item .task-list-item-checkbox {
-     margin-inline-start: 0;
-         margin: 5px 2px;
-         border-radius: 30%;
+    margin: 5px 0px;
+    border-radius: 30%;
 }
 
 /* Task priority is denoted by changing the color of the checkbox */
 .task-list-item[data-task-priority="highest"] input[type=checkbox] {
-        border-color: rgb(255, 54, 54);
+        border-color: rgb(255, 39, 39);
 }
 
 .task-list-item[data-task-priority="high"] input[type=checkbox] {
-        border-color: rgb(255, 166, 0); 
+        border-color: rgb(255, 136, 0); 
 }
 
 .task-list-item[data-task-priority="medium"] input[type=checkbox] {
-        border-color: rgb(255, 230, 0);
+        border-color: rgb(255, 236, 62);
 }
 
 .task-list-item[data-task-priority="normal"] input[type=checkbox] {
@@ -41,11 +40,11 @@ ul > li.plugin-tasks-list-item .task-list-item-checkbox {
 }
 
 .task-list-item[data-task-priority="low"] input[type=checkbox] {
-        border-color: rgb(42, 134, 255);
+        border-color: rgb(61, 145, 255);
 }
 
 .task-list-item[data-task-priority="lowest"] input[type=checkbox] {
-        border-color: rgb(161, 119, 239);
+        border-color: rgb(170, 125, 255);
 }
 
 /* Hides elements that aren't necessary to be shown */
@@ -82,7 +81,7 @@ ul > li.plugin-tasks-list-item {
     display: grid;
     grid-template-columns: 0px auto 1fr;
     grid-template-rows: auto auto;
-    gap: 4px 8px;
+    gap: 4px 20px;  /* Change the second value if there are issues with the checkbox clipping into text */
     align-items: start;
     padding: 8px 0;
     position: relative;
@@ -119,7 +118,7 @@ ul > li.plugin-tasks-list-item {
 span.task-extras{
     position: absolute;
     top: 8px;
-    left: 10px;
+    left: 20px;
     right: 0;
     font-size: var(--maintext-size);
     z-index: 100;
